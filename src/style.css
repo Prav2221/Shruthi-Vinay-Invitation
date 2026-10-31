@@ -45,3 +45,51 @@ h1 span{font-family:'Great Vibes',cursive;font-size:1.02em;font-weight:400;lette
 .bottom-ornament{color:#d9b66e;font-size:24px;letter-spacing:5px;margin-top:25px}
 footer{text-align:center;color:#c6a978;font-size:11px;letter-spacing:1px;padding:18px}
 @media(max-width:600px){main{padding:12px 8px}.frame{padding:28px 18px}.event-schedule{grid-template-columns:1fr;gap:14px;margin:20px 7px 25px}.date-label{font-size:20px}.count-box strong{font-size:34px}.count-box{min-width:48px}.intro,.invite-copy{font-size:14px}.closing p{font-size:21px}}
+
+
+/* Traditional animated welcome screen */
+.welcome-screen{position:fixed;z-index:20;inset:0;min-height:100svh;display:grid;place-items:center;padding:18px;background:radial-gradient(ellipse at 50% 35%,#7d293b 0,#4a1424 48%,#210710 100%);overflow:hidden;animation:screenFade .8s ease both}
+.welcome-screen:before,.welcome-screen:after{content:"";position:absolute;inset:12px;border:1px solid rgba(220,184,112,.72);pointer-events:none}
+.welcome-screen:after{inset:20px;border:1px dashed rgba(220,184,112,.36)}
+.welcome-border{width:min(100%,560px);min-height:min(790px,calc(100svh - 56px));position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:34px 22px;color:#f4dca9;border:1px solid rgba(222,185,113,.65);box-shadow:0 0 70px rgba(8,0,3,.38),inset 0 0 45px rgba(218,179,103,.08);background:linear-gradient(160deg,rgba(104,28,46,.35),rgba(38,7,17,.55))}
+.welcome-toran{position:absolute;top:22px;color:#e5c17a;font-size:clamp(20px,5vw,29px);letter-spacing:5px;animation:toranSway 4s ease-in-out infinite}
+.welcome-kalash,.farewell-diya{font-size:35px;filter:drop-shadow(0 0 15px rgba(255,191,91,.45));animation:diyaGlow 2.4s ease-in-out infinite}
+.welcome-kicker,.farewell-kicker{font-size:10px;letter-spacing:2px;color:#e4c486;margin:12px 0}
+.welcome-title{font-family:'Cormorant Garamond',serif;font-size:clamp(45px,9vw,68px);line-height:.95;font-weight:500;color:#f4d99d;margin:14px 0}
+.welcome-title em{font-family:'Great Vibes',cursive;font-size:1.05em;font-weight:400}
+.welcome-names,.farewell-names{font-family:'Great Vibes',cursive;font-size:clamp(34px,7vw,47px);color:#f5d68f;margin:5px 0}
+.welcome-names span,.farewell-names span{font-family:'Cormorant Garamond',serif;font-size:.7em;padding:0 8px}
+.envelope-wrap{width:190px;height:125px;margin:20px auto 9px;perspective:800px;animation:floatEnvelope 3s ease-in-out infinite}
+.envelope{height:100%;position:relative;background:linear-gradient(145deg,#e7c987,#b98543);border:1px solid #f7dfa4;box-shadow:0 12px 28px rgba(0,0,0,.3);clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}
+.envelope:before,.envelope:after{content:"";position:absolute;bottom:0;width:0;height:0;border-style:solid}
+.envelope:before{left:0;border-width:0 95px 76px 0;border-color:transparent #d0a35c transparent transparent}
+.envelope:after{right:0;border-width:0 0 76px 95px;border-color:transparent transparent transparent #c39550}
+.envelope-flap{position:absolute;z-index:2;top:0;left:0;width:0;height:0;border-left:95px solid transparent;border-right:95px solid transparent;border-top:72px solid #f0d69b;transform-origin:top;animation:flapBreathe 3s ease-in-out infinite}
+.envelope-seal{position:absolute;z-index:3;top:48px;left:calc(50% - 18px);width:36px;height:36px;display:grid;place-items:center;border-radius:50%;background:#76263a;color:#f6d995;font-size:22px;border:1px solid #f1d18a}
+.welcome-hint{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:#ead4aa;margin:8px 0 18px}
+.open-button,.back-to-top{padding:13px 24px;border:1px solid #e4c17b;background:linear-gradient(135deg,#e5c47f,#b88949);color:#3d1020;font-size:11px;font-weight:700;letter-spacing:1.8px;cursor:pointer;box-shadow:0 5px 20px rgba(0,0,0,.2);transition:transform .25s,filter .25s}
+.open-button:hover,.back-to-top:hover{transform:translateY(-3px);filter:brightness(1.1)}
+.open-button span{margin-left:8px}
+.welcome-bottom{font-size:9px;letter-spacing:2px;color:#d9b979;margin-top:25px}
+.welcome-glow{position:absolute;width:360px;height:360px;border-radius:50%;background:rgba(224,174,95,.08);filter:blur(60px);animation:glowPulse 5s ease-in-out infinite}
+.invitation-main.hidden-main{display:none}
+.invitation-main.reveal-main{display:block;animation:contentReveal 1s ease both}
+.farewell-screen{max-width:850px;margin:28px auto 0;padding:18px;background:linear-gradient(145deg,#681d32,#2d0915);border:1px solid #c9a45c;box-shadow:0 18px 55px #100309;text-align:center;color:#f4dca9}
+.farewell-inner{padding:44px 18px;border:1px solid rgba(214,180,111,.48);outline:1px dashed rgba(214,180,111,.25);outline-offset:-10px}
+.farewell-ornament{font-size:27px;letter-spacing:7px;color:#d9b66e}
+.farewell-diya{margin:17px 0}
+.farewell-kicker{margin:12px 0 4px}
+.farewell-inner h2{font-family:'Great Vibes',cursive;font-size:clamp(55px,10vw,76px);font-weight:400;color:#f4d48e;margin:4px 0 10px}
+.farewell-message{font-family:'Cormorant Garamond',serif;font-size:24px;line-height:1.5;color:#f4e5c8}
+.farewell-names{margin:20px 0}
+.farewell-signoff{font-family:'Cormorant Garamond',serif;font-style:italic;color:#e6c98e;margin:12px 0 22px}
+.back-to-top{background:transparent;color:#f3d89b;margin-bottom:5px}
+@keyframes screenFade{from{opacity:0}to{opacity:1}}
+@keyframes floatEnvelope{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes flapBreathe{0%,100%{transform:rotateX(0)}50%{transform:rotateX(12deg)}}
+@keyframes toranSway{0%,100%{transform:rotate(-1deg)}50%{transform:rotate(1deg)}}
+@keyframes diyaGlow{0%,100%{filter:drop-shadow(0 0 7px rgba(255,191,91,.25))}50%{filter:drop-shadow(0 0 20px rgba(255,191,91,.8))}}
+@keyframes glowPulse{0%,100%{transform:scale(.9);opacity:.55}50%{transform:scale(1.15);opacity:1}}
+@keyframes contentReveal{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+@media(max-width:600px){.welcome-border{min-height:calc(100svh - 48px);padding:28px 15px}.envelope-wrap{transform:scale(.88);margin:12px auto 5px}.farewell-inner{padding:34px 12px}.farewell-message{font-size:21px}}
