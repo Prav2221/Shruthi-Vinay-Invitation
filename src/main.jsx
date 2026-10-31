@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { MapPin, CalendarDays, Clock3, Volume2, VolumeX, Heart, Share2 } from 'lucide-react'
+import { MapPin, Heart, Share2 } from 'lucide-react'
 import './style.css'
 
 const weddingDate = new Date('2026-11-19T09:00:00+05:30')
@@ -25,25 +25,6 @@ function Countdown() {
 }
 
 function App() {
-  const [playing, setPlaying] = useState(false)
-  const audioRef = React.useRef(null)
-
-  const toggleMusic = async () => {
-    const audio = audioRef.current
-    if (!audio) return
-    try {
-      if (playing) {
-        audio.pause()
-        setPlaying(false)
-      } else {
-        await audio.play()
-        setPlaying(true)
-      }
-    } catch {
-      alert('Please add a royalty-free celebrative instrumental MP3 named wedding-music.mp3 inside the public folder.')
-    }
-  }
-
   const share = () => {
     const url = window.location.href
     const text = shareText + '\n' + url
@@ -98,9 +79,7 @@ function App() {
 
       <div className="actions">
         <button className="button gold" onClick={share}><Share2 size={18}/> Share Invitation</button>
-        <button className="button outline" onClick={toggleMusic}>{playing ? <VolumeX size={18}/> : <Volume2 size={18}/>} {playing ? 'Pause Music' : 'Play Music'}</button>
       </div>
-      <audio ref={audioRef} src="/wedding-music.mp3" loop />
       <div className="bottom-ornament">❧  ✥  ❧  ✥  ❧</div>
     </div>
     <footer>With warm regards · Shruthi &amp; Vinay</footer>
