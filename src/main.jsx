@@ -25,6 +25,8 @@ function Countdown() {
 }
 
 function App() {
+  const [opened, setOpened] = useState(false)
+
   const share = () => {
     const url = window.location.href
     const text = shareText + '\n' + url
@@ -32,7 +34,27 @@ function App() {
     else window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank')
   }
 
-  return <main>
+  return <>
+    {!opened && <section className="welcome-screen">
+      <div className="welcome-border">
+        <div className="welcome-toran">❧ ✥ ❧ ✥ ❧</div>
+        <div className="welcome-kalash" aria-hidden="true">🪔</div>
+        <p className="welcome-kicker">WITH THE BLESSINGS OF OUR FAMILIES</p>
+        <h1 className="welcome-title">A Wedding<br/><em>Celebration</em></h1>
+        <p className="welcome-names">Shruthi R <span>&</span> Vinay B</p>
+        <div className="envelope-wrap" aria-hidden="true">
+          <div className="envelope">
+            <div className="envelope-flap"></div>
+            <div className="envelope-seal">❀</div>
+          </div>
+        </div>
+        <p className="welcome-hint">A little invitation, wrapped with love</p>
+        <button className="open-button" onClick={() => setOpened(true)}>OPEN INVITATION <span>✧</span></button>
+        <div className="welcome-bottom">❧  WITH LOVE & BLESSINGS  ❧</div>
+      </div>
+      <div className="welcome-glow"></div>
+    </section>}
+    <main className={opened ? 'invitation-main reveal-main' : 'invitation-main hidden-main'}>
     <div className="frame">
       <div className="toran" aria-hidden="true">❧  ✥  ❧  ✥  ❧  ✥  ❧</div>
       <p className="eyebrow">A CELEBRATION OF LOVE, TRADITION & TOGETHERNESS</p>
@@ -82,8 +104,22 @@ function App() {
       </div>
       <div className="bottom-ornament">❧  ✥  ❧  ✥  ❧</div>
     </div>
+    <section className="farewell-screen">
+      <div className="farewell-inner">
+        <div className="farewell-ornament">❧ ✥ ❧</div>
+        <div className="farewell-diya">🪔</div>
+        <p className="farewell-kicker">THE CELEBRATION IS MADE COMPLETE BY YOU</p>
+        <h2>Thank You</h2>
+        <p className="farewell-message">Your presence, love and blessings<br/>mean the world to us.</p>
+        <div className="farewell-names">Shruthi <span>&</span> Vinay</div>
+        <div className="farewell-ornament">❧ ✥ ❧</div>
+        <p className="farewell-signoff">With love and gratitude</p>
+        <button className="back-to-top" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>BACK TO INVITATION ↑</button>
+      </div>
+    </section>
     <footer>With warm regards · Shruthi &amp; Vinay</footer>
   </main>
+  </>
 }
 
 createRoot(document.getElementById('root')).render(<App />)
